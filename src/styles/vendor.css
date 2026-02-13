@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-red: #D02123;
+    --light-red: #FF6C6C;
+}
+
+.vendor-container {
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.vendor-content {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.vendor-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.vendor-illustration {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 500px;
+}
+
+.vendor-text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+}
+
+.vendor-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--primary-red);
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+.vendor-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #666666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.vendor-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #D32F2F;
+    color: #D32F2F;
+    color: #D32F2F;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.register-btn {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #FF6C6C 0%, #D02123 65%);
+    box-shadow: 0 4px 15px rgba(208, 33, 35, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    align-self: flex-start;
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(208, 33, 35, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .vendor-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .vendor-title {
+        font-size: 2.5rem;
+    }
+
+    .vendor-text-content {
+        align-items: center;
+    }
+
+    .register-btn {
+        align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .vendor-title {
+        font-size: 2rem;
+    }
+
+    .vendor-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .vendor-illustration {
+        max-height: 300px;
+    }
+}
