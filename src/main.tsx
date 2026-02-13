@@ -12,5 +12,6 @@ createRoot(document.getElementById('root')!).render(
     <Showcase/>
     <Vendor/>
   <Customer/>
+  
   </StrictMode>,
 )
