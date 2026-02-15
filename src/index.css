@@ -1,1 +1,30 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;600&family=Maven+Pro:wght@400;500;700&display=swap');
+
+@theme {
+	--color-primary-red: #D02123;
+	--color-light-red: #FF6B6B;
+}
+
+html {
+	font-size: 85%;
+}
+
+body,
+html {
+	font-family: 'Maven Pro', sans-serif;
+}
+
+@keyframes rotate-bg {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.animate-rotate-bg {
+	animation: rotate-bg 20s linear infinite;
+}
