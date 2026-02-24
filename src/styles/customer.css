@@ -1,145 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
 
+@reference "tailwindcss";
+
 :root {
     --primary-red: #D02123;
     --light-red: #FF6C6C;
 }
 
 .customer-container {
-    min-height: 100vh;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    @apply min-h-screen py-15 px-5 flex flex-col justify-between items-center text-white relative overflow-hidden;
     font-family: 'Inter', sans-serif;
-    color: #ffffff;
-
-
     background: linear-gradient(135deg, #FF6C6C 0%, #D02123 65%);
     background-size: cover;
     background-attachment: fixed;
-    position: relative;
-    overflow: hidden;
 }
 
 .customer-main {
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    flex: 1;
+    @apply max-w-[1200px] w-full flex items-center justify-between gap-10 flex-1;
 }
 
-
 .customer-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    text-align: left;
-    align-items: flex-start;
+    @apply flex-1 flex flex-col gap-10 items-center text-center;
 }
 
 .customer-title {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin: 0;
-    text-align: left;
+    @apply text-center m-0 font-bold leading-tight;
+    @apply text-6xl;
 }
-
-
-.customer-content {
-    align-items: center;
-    text-align: center;
-}
-
-.customer-title {
-    text-align: center;
-}
-
 
 .join-btn {
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #ffffff;
+    @apply py-4 px-10 text-lg font-semibold text-white rounded-full cursor-pointer transition-all duration-300;
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid #ffffff;
-    border-radius: 50px;
-    cursor: pointer;
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .join-btn:hover {
-    background: #ffffff;
+    @apply bg-white -translate-y-0.5;
     color: var(--primary-red);
-    transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-
 .customer-image-slot {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @apply flex-1 flex justify-center items-center;
 }
 
 .customer-illustration {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    max-height: 500px;
+    @apply max-w-full h-auto object-contain max-h-[500px];
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
 }
 
-
 .customer-features {
-    width: 100%;
-    max-width: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 20px;
-    margin-top: 40px;
+    @apply w-full max-w-[1000px] flex justify-center items-end gap-5 mt-10;
     perspective: 1000px;
 }
 
 .feature-card {
-    padding: 20px 30px;
+    @apply py-5 px-8 rounded-2xl font-semibold text-base text-center cursor-pointer opacity-0;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 1rem;
     color: #AE2924;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    opacity: 0;
     transform: translateY(50px);
     animation: slideUpFade 0.8s forwards;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-
 .feature-card.active {
-    background: #ffffff;
+    @apply bg-white font-bold z-[2];
     color: #CB202D;
     transform: scale(1.1) translateY(-10px);
     font-size: 1.2rem;
     padding: 25px 40px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    font-weight: 700;
-    z-index: 2;
 }
-
 
 @keyframes slideUpFade {
     to {
@@ -148,13 +83,11 @@
     }
 }
 
-
 .delay-1 {
     animation-delay: 0.5s;
 }
 
 .active.delay-2 {
-
     animation: slideUpActive 0.8s 1.5s forwards;
 }
 
@@ -171,52 +104,5 @@
     to {
         opacity: 1;
         transform: translateY(-10px) scale(1.1);
-    }
-}
-
-
-
-@media (max-width: 968px) {
-    .customer-main {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-
-    .customer-title {
-        font-size: 2.5rem;
-    }
-
-    .customer-features {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .feature-card {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .feature-card.active {
-        transform: scale(1.05);
-    }
-
-    @keyframes slideUpActive {
-        to {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-    }
-}
-
-@media (max-width: 480px) {
-    .customer-title {
-        font-size: 2rem;
-    }
-
-    .join-btn {
-        width: 100%;
-        max-width: 300px;
     }
 }

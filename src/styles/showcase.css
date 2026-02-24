@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
 
+@reference "tailwindcss";
+
 :root {
     --primary-red: #D02123;
     --light-red: #FF6B6B;
@@ -7,128 +9,70 @@
 }
 
 .showcase-container {
-    min-height: 100vh;
+    @apply min-h-screen flex justify-center items-center;
+    @apply py-15 px-5;
+    font-family: 'Inter', sans-serif;
     background-color: var(--primary-red);
     background-image:
         radial-gradient(circle at 50% 30%, rgba(255, 107, 107, 0.4) 0%, transparent 70%),
         linear-gradient(135deg, #FF6C6C 0%, var(--primary-red) 65%),
         url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-blend-mode: soft-light, normal, overlay;
-    padding: 60px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Inter', sans-serif;
 }
 
 .showcase-content {
-    max-width: 700px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
+    @apply max-w-[700px] w-full flex flex-col gap-15;
 }
 
 .showcase-header {
-    text-align: center;
-    color: #ffffff;
+    @apply text-center text-white;
 }
 
 .showcase-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+    @apply font-bold mb-5 leading-tight;
+    @apply text-4xl;
     font-family: 'Inter', sans-serif;
-    line-height: 1.2;
 }
 
 .showcase-subtitle {
-    font-size: 1rem;
-    line-height: 1.6;
-    font-weight: 400;
-    max-width: 600px;
-    margin: 0 auto;
-    opacity: 0.95;
+    @apply text-base font-normal max-w-[600px] mx-auto opacity-95 leading-relaxed;
 }
 
 .showcase-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    position: relative;
+    @apply flex flex-col gap-8 relative;
 }
 
-
 .timeline-center-line {
-    position: absolute;
+    @apply absolute top-0 h-full w-auto opacity-80 z-0;
     left: 50%;
-    top: 0;
-    height: 100%;
-    width: auto;
     transform: translateX(-50%);
-    z-index: 0;
-    opacity: 0.8;
 }
 
 .timeline-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: center;
-    gap: 0;
-    gap: 0;
-    position: relative;
-    z-index: 1;
-    width: 100%;
+    @apply flex items-center justify-center gap-0 relative z-[1] w-full;
 }
 
 .timeline-item.left {
+    @apply justify-end mr-[5px];
     padding-right: 50%;
-    padding-right: 50%;
-    justify-content: flex-end;
-    justify-content: flex-end;
-    margin-right: 5px;
-    margin-right: 5px;
 }
 
 .timeline-item.right {
+    @apply justify-start ml-[5px];
     padding-left: 50%;
-    padding-left: 50%;
-    justify-content: flex-start;
-    justify-content: flex-start;
-    margin-left: 5px;
-    margin-left: 5px;
 }
 
 .timeline-card {
-    background-color: transparent;
+    @apply bg-transparent rounded-2xl p-0 flex flex-col items-center gap-2 border-none shadow-none w-[260px] transition-transform duration-300;
     backdrop-filter: none;
-    border-radius: 16px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    box-shadow: none;
-    border: none;
-
-    width: 260px;
-    transition: transform 0.3s ease;
 }
 
 .timeline-card:hover {
-    transform: translateY(-5px);
-    box-shadow: none;
+    @apply -translate-y-1 shadow-none;
 }
 
 .timeline-image {
-    width: 260px;
-    width: 260px;
-    height: 180px;
-    height: 180px;
-    object-fit: cover;
-    object-fit: cover;
-    border-radius: 12px;
+    @apply w-[260px] h-[180px] object-cover rounded-xl;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 5px;
     border: 3px solid #ffffff;
@@ -136,121 +80,22 @@
 }
 
 .timeline-label {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #ffffff;
-    text-align: center;
-    margin: 0;
-    line-height: 1.3;
+    @apply text-base font-semibold text-white text-center m-0 leading-snug;
 }
 
-
 .timeline-connector-img {
-    width: auto;
+    @apply w-auto object-fill shrink-0 relative -z-[1];
     height: 60px;
-    height: 60px;
-    object-fit: fill;
-    flex-shrink: 0;
-    opacity: 0.9;
     opacity: 0.9;
     margin-top: -30px;
-    margin-top: -30px;
-    position: relative;
-    z-index: -1;
-
 }
 
 .left-connector {
     margin-right: -1px;
-    margin-right: -1px;
-    margin-left: -10px;
     margin-left: -10px;
 }
 
 .right-connector {
     margin-left: -6px;
-    margin-left: -6px;
     margin-right: -10px;
-    margin-right: -10px;
-}
-
-
-@media (max-width: 768px) {
-    .showcase-title {
-        font-size: 2rem;
-    }
-
-    .showcase-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .timeline-center-line {
-        left: 30px;
-        height: auto;
-        max-height: 100%;
-    }
-
-    .timeline-item {
-        flex-direction: row;
-        justify-content: flex-start !important;
-        padding-left: 60px;
-    }
-
-    .timeline-item.left,
-    .timeline-item.right {
-        justify-content: flex-start;
-    }
-
-    .timeline-card {
-        max-width: 100%;
-    }
-
-    .timeline-connector-img {
-        display: none;
-    }
-
-
-    .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: 23px;
-        top: 50%;
-        width: 14px;
-        height: 14px;
-        background-color: #ffffff;
-        border-radius: 50%;
-        transform: translateY(-50%);
-        z-index: 2;
-        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
-    }
-}
-
-@media (max-width: 480px) {
-    .showcase-container {
-        padding: 40px 15px;
-    }
-
-    .showcase-title {
-        font-size: 1.75rem;
-    }
-
-    .showcase-subtitle {
-        font-size: 0.85rem;
-    }
-
-    .timeline-item {
-        padding-left: 50px;
-    }
-
-    .timeline-item::before {
-        left: 18px;
-    }
-
-    .timeline-center-line {
-        left: 25px;
-    }
-
-    .timeline-label {
-        font-size: 0.9rem;
-    }
 }

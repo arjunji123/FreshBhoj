@@ -1,1 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+    --color-primary-red: #D02123;
+    --color-light-red: #FF6C6C;
+    --color-dark-red: #AE2924;
+    --color-accent-red: #CB202D;
+    --color-soft-red: #D32F2F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Maven Pro', 'Inter', Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-width: 1200px;
+    overflow-x: auto;
+}
