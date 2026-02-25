@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@300;400;600;700&display=swap');
+
+/* ── VENDOR FORM STYLES ── */
+
+.vendor-form-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    color: #333;
+    margin: 2rem auto;
+    font-family: 'Maven Pro', Arial, Helvetica, sans-serif;
+}
+
+.vendor-form-header {
+    color: #e31837;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+}
+
+.form-section-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 2.5rem 0 1.5rem;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.form-section-subtitle {
+    font-size: 1rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    color: #e31837;
+}
+
+.vendor-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.vendor-input {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    background: #e9ecef;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #495057;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.vendor-input::placeholder {
+    color: #adb5bd;
+}
+
+.vendor-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.vendor-select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.vendor-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #6c757d;
+    margin-left: 0.2rem;
+}
+
+.vendor-select {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    background: #f8d7da;
+    border: 1px dashed #f5c2c7;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #842029;
+    cursor: pointer;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.vendor-textarea {
+    width: 100%;
+    padding: 1rem;
+    background: #f8d7da;
+    border: 1px dashed #f5c2c7;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    min-height: 120px;
+    font-family: 'Maven Pro', sans-serif;
+    resize: vertical;
+}
+
+.vendor-submit-btn {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 3rem auto 2rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #FF6C6C 0%, #D02123 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(227, 24, 55, 0.3);
+    font-family: 'Maven Pro', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.vendor-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(227, 24, 55, 0.4);
+}
+
+.vendor-form-footer-img {
+    display: block;
+    width: 180px;
+    margin: 0 auto;
+    object-fit: contain;
+}

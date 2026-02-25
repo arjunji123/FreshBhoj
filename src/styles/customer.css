@@ -1,108 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Maven+Pro:wght@300;400;600;700&display=swap');
 
 @reference "tailwindcss";
 
 :root {
     --primary-red: #D02123;
-    --light-red: #FF6C6C;
+    --light-red: #FF6B6B;
+    --vw: min(1vw, 28px);
+}
+
+@media (max-width: 1280px) {
+    :root {
+        --vw: min(1.4vw, 28px);
+    }
 }
 
 .customer-container {
-    @apply min-h-screen py-15 px-5 flex flex-col justify-between items-center text-white relative overflow-hidden;
-    font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #FF6C6C 0%, #D02123 65%);
-    background-size: cover;
-    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: calc(6 * var(--vw)) 0;
+    font-family: 'Maven Pro', Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+    color: white;
 }
 
 .customer-main {
-    @apply max-w-[1200px] w-full flex items-center justify-between gap-10 flex-1;
+    width: 100%;
+    max-width: calc(96 * var(--vw));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(6 * var(--vw));
+    padding: 0 calc(4 * var(--vw));
+    flex: 1;
 }
 
 .customer-content {
-    @apply flex-1 flex flex-col gap-10 items-center text-center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: calc(3.5 * var(--vw));
+    text-align: center;
+    align-items: center;
 }
 
 .customer-title {
-    @apply text-center m-0 font-bold leading-tight;
-    @apply text-6xl;
+    font-size: calc(6 * var(--vw));
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0;
+    color: white;
 }
 
 .join-btn {
-    @apply py-4 px-10 text-lg font-semibold text-white rounded-full cursor-pointer transition-all duration-300;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid #ffffff;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    align-self: center;
+    padding: calc(1.2 * var(--vw)) calc(3.5 * var(--vw));
+    font-size: calc(1.3 * var(--vw));
+    font-weight: 600;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: calc(50 * var(--vw));
+    cursor: pointer;
+    background: linear-gradient(92.95deg, rgba(255, 0, 0, 0.19) 66.33%, rgba(153, 0, 0, 0.19) 93.82%);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 calc(0.5 * var(--vw)) calc(2 * var(--vw)) rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 .join-btn:hover {
-    @apply bg-white -translate-y-0.5;
-    color: var(--primary-red);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(calc(-0.2 * var(--vw)));
+    background: rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 calc(0.8 * var(--vw)) calc(3 * var(--vw)) rgba(0, 0, 0, 0.3);
 }
 
 .customer-image-slot {
-    @apply flex-1 flex justify-center items-center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .customer-illustration {
-    @apply max-w-full h-auto object-contain max-h-[500px];
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: calc(52 * var(--vw));
+    filter: drop-shadow(0 calc(2 * var(--vw)) calc(6 * var(--vw)) rgba(0, 0, 0, 0.3));
 }
 
-.customer-features {
-    @apply w-full max-w-[1000px] flex justify-center items-end gap-5 mt-10;
-    perspective: 1000px;
+.customer-slider-section {
+    width: 100vw;
+    position: relative;
+    padding: calc(6 * var(--vw)) 0;
+    margin-top: auto;
+    overflow: hidden;
 }
 
-.feature-card {
-    @apply py-5 px-8 rounded-2xl font-semibold text-base text-center cursor-pointer opacity-0;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    color: #AE2924;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(50px);
-    animation: slideUpFade 0.8s forwards;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+.feature-text-card {
+    width: calc(38 * var(--vw));
+    height: calc(10 * var(--vw));
+    flex-shrink: 0;
+    padding: calc(1.5 * var(--vw)) calc(3 * var(--vw));
+    border-radius: calc(2.4 * var(--vw));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid transparent;
+    /* Handled by variants */
+    position: relative;
 }
 
-.feature-card.active {
-    @apply bg-white font-bold z-[2];
-    color: #CB202D;
-    transform: scale(1.1) translateY(-10px);
-    font-size: 1.2rem;
-    padding: 25px 40px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+.feature-text-inner {
+    font-size: calc(1.5 * var(--vw));
+    font-weight: 500;
+    line-height: 1.3;
+    transition: color 0.6s ease, font-weight 0.6s ease;
 }
 
-@keyframes slideUpFade {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Fallbacks and helper classes for Framer */
+.card-active {
+    box-shadow: 0 calc(2 * var(--vw)) calc(5 * var(--vw)) rgba(0, 0, 0, 0.2);
+    border-color: #ffffff;
 }
 
-.delay-1 {
-    animation-delay: 0.5s;
-}
-
-.active.delay-2 {
-    animation: slideUpActive 0.8s 1.5s forwards;
-}
-
-.delay-3 {
-    animation-delay: 2.5s;
-}
-
-@keyframes slideUpActive {
-    from {
-        opacity: 0;
-        transform: translateY(50px) scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(-10px) scale(1.1);
-    }
+.card-active .feature-text-inner {
+    color: #D02123 !important;
+    font-weight: 600;
 }

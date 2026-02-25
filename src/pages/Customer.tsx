@@ -1,10 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import '../styles/customer.css';
 import { motion } from 'framer-motion';
 
-const features = [
+const baseFeatures = [
     "Watch local food videos before you order",
-    "Discover hidden gems in your neighborhood",
-    "Early access rewards for first 1000 users",
+    "Discover trending local food",
+    "Early access & rewards",
     "Connect directly with local food vendors",
     "Visual-first ordering experience",
     "Authentic taste, nearby location",
@@ -14,25 +15,89 @@ const features = [
     "Seamless ordering and fast pickup"
 ];
 
+// Create a larger array for infinite cyclic feel
+const features = [...baseFeatures, ...baseFeatures, ...baseFeatures];
+const startIndex = baseFeatures.length; // Start in the middle set
+
+const cardVariants = {
+    active: {
+        scale: 1.18,
+        backgroundColor: "#ffffff",
+        borderColor: "#ffffff",
+        opacity: 1,
+        boxShadow: "0px 20px 50px rgba(0, 0, 0, 0.25)",
+        zIndex: 10,
+        transition: { duration: 0.8, ease: "circOut" as const }
+    },
+    inactive: {
+        scale: 0.85,
+        backgroundColor: "rgba(255, 255, 255, 0.15)",
+        borderColor: "rgba(255, 255, 255, 0.1)",
+        opacity: 0.4,
+        boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.05)",
+        zIndex: 1,
+        transition: { duration: 0.8, ease: "circOut" as const }
+    }
+};
+
+const textVariants = {
+    active: {
+        color: "#D02123",
+        fontWeight: 700,
+        scale: 1.05,
+        transition: { duration: 0.8, ease: "circOut" as const }
+    },
+    inactive: {
+        color: "rgba(255, 255, 255, 0.8)",
+        fontWeight: 500,
+        scale: 1,
+        transition: { duration: 0.8, ease: "circOut" as const }
+    }
+};
+
 export function Customer() {
+    const [activeIndex, setActiveIndex] = useState(startIndex);
+    const [isTransitioning, setIsTransitioning] = useState(true);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsTransitioning(true);
+            setActiveIndex((prev) => prev + 1);
+        }, 4000); // Wait for 4s then slide
+
+        return () => clearInterval(interval);
+    }, []);
+
+    // Handle Infinite Jump
+    useEffect(() => {
+        if (activeIndex >= baseFeatures.length * 2) {
+            // Wait for transition to finish, then jump back to middle set silently
+            const timer = setTimeout(() => {
+                setIsTransitioning(false);
+                setActiveIndex(startIndex);
+            }, 800); // Match transition duration
+            return () => clearTimeout(timer);
+        }
+    }, [activeIndex]);
+
     return (
-        <div className="customer-container min-h-screen flex flex-col items-center justify-center text-white relative overflow-hidden px-24 py-24">
-            <div className="customer-main w-full max-w-[1400px] flex items-center justify-between gap-24 mb-24">
-                <div className="customer-content flex-1 flex flex-col items-start text-left gap-12">
+        <div className="customer-container">
+            <div className="customer-main">
+                <div className="customer-content">
                     <motion.h1
-                        className="customer-title text-6xl font-bold leading-[1.05] tracking-tight"
+                        className="customer-title"
                         initial={{ opacity: 0, y: 60 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
                         viewport={{ once: true }}
                     >
-                        Food You Can<br className="block" />
-                        See Before You <br className="block" />
+                        Food<br />
+                        You Can See Before You<br />
                         Order
                     </motion.h1>
 
                     <motion.button
-                        className="join-btn px-12 py-5 text-lg font-medium border-2 border-white/40 bg-white/15 hover:bg-white hover:text-[#D02123] rounded-full transition-all duration-300 backdrop-blur-xl shadow-2xl"
+                        className="join-btn"
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
@@ -42,38 +107,38 @@ export function Customer() {
                     </motion.button>
                 </div>
 
-                <div className="customer-image-slot flex-1 flex justify-center w-full mt-0">
+                <div className="customer-image-slot">
                     <img
                         src="/Image/user_image_label.png"
                         alt="Customer Order Experience"
-                        className="customer-illustration w-full h-auto object-contain filter drop-shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
+                        className="customer-illustration"
                     />
                 </div>
             </div>
 
-            <div className="customer-slider-section w-screen relative left-1/2 -translate-x-1/2 py-20 bg-white/5 backdrop-blur-md overflow-hidden flex justify-center border-y border-white/10">
-                <div className="feature-slider-track w-full flex items-center">
+            <div className="customer-slider-section">
+                <div className="feature-slider-track">
                     <motion.div
-                        className="slider-content flex gap-12 px-6"
-                        animate={{ x: ["0%", "-50%"] }}
-                        transition={{
-                            duration: 35,
-                            repeat: Infinity,
-                            ease: "linear"
+                        className="slider-content flex gap-12"
+                        animate={{
+                            x: `calc(50vw - (${activeIndex} * (38 * var(--vw) + 48px)) - (19 * var(--vw)))`
                         }}
+                        transition={isTransitioning ? { duration: 0.8, ease: "circOut" } : { duration: 0 }}
                     >
-                        {[...features, ...features].map((text, index) => (
+                        {features.map((text, index) => (
                             <motion.div
                                 key={index}
-                                className="feature-text-card min-w-[400px] p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[32px] flex items-center justify-center text-center transition-all duration-500 hover:bg-white/20 hover:border-white/40 group shadow-lg"
-                                initial={{ scale: 0.85, opacity: 0.5 }}
-                                whileInView={{ scale: 1.05, opacity: 1 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ margin: "-30%" }}
+                                className="feature-text-card"
+                                initial="inactive"
+                                animate={index === activeIndex ? "active" : "inactive"}
+                                variants={cardVariants}
                             >
-                                <div className="feature-text-inner text-2xl font-semibold text-white leading-relaxed group-hover:scale-105 transition-transform duration-300">
+                                <motion.div
+                                    className="feature-text-inner"
+                                    variants={textVariants}
+                                >
                                     {text}
-                                </div>
+                                </motion.div>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -82,3 +147,5 @@ export function Customer() {
         </div>
     );
 }
+
+

@@ -1,101 +1,161 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Maven+Pro:wght@300;400;600;700&display=swap');
 
 @reference "tailwindcss";
 
 :root {
     --primary-red: #D02123;
     --light-red: #FF6B6B;
-    --showcase-red: #EF5350;
+    --vw: min(1vw, 28px);
 }
 
-.showcase-container {
-    @apply min-h-screen flex justify-center items-center;
-    @apply py-15 px-5;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--primary-red);
+@media (max-width: 1280px) {
+    :root {
+        --vw: min(1.4vw, 28px);
+    }
+}
+
+.showcase-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: calc(10 * var(--vw)) calc(4 * var(--vw)) calc(12 * var(--vw));
+    background-color: #D02123;
     background-image:
         radial-gradient(circle at 50% 30%, rgba(255, 107, 107, 0.4) 0%, transparent 70%),
-        linear-gradient(135deg, #FF6C6C 0%, var(--primary-red) 65%),
+        linear-gradient(135deg, #FF6C6C 0%, #D02123 65%),
         url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-blend-mode: soft-light, normal, overlay;
-}
-
-.showcase-content {
-    @apply max-w-[700px] w-full flex flex-col gap-15;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 .showcase-header {
-    @apply text-center text-white;
+    text-align: center;
+    max-width: calc(85 * var(--vw));
+    margin-bottom: calc(8 * var(--vw));
+    position: relative;
+    z-index: 10;
 }
 
 .showcase-title {
-    @apply font-bold mb-5 leading-tight;
-    @apply text-4xl;
-    font-family: 'Inter', sans-serif;
+    font-size: calc(4 * var(--vw));
+    font-weight: 700;
+    margin-bottom: calc(1.5 * var(--vw));
+    tracking: -0.02em;
 }
 
 .showcase-subtitle {
-    @apply text-base font-normal max-w-[600px] mx-auto opacity-95 leading-relaxed;
+    font-size: calc(1.35 * var(--vw));
+    opacity: 0.95;
+    max-width: calc(65 * var(--vw));
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
 }
 
-.showcase-timeline {
-    @apply flex flex-col gap-8 relative;
+.showcase-timeline-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(5 * var(--vw));
 }
 
-.timeline-center-line {
-    @apply absolute top-0 h-full w-auto opacity-80 z-0;
+.timeline-spine {
+    position: absolute;
     left: 50%;
+    top: calc(8 * var(--vw));
+    bottom: calc(8 * var(--vw));
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
     transform: translateX(-50%);
+    z-index: 0;
 }
 
-.timeline-item {
-    @apply flex items-center justify-center gap-0 relative z-[1] w-full;
+.timeline-spine-glow {
+    position: absolute;
+    inset: 0;
+    background: vertical-gradient(from rgba(208, 33, 35, 1) to transparent);
+    opacity: 0.5;
+    pointer-events: none;
 }
 
-.timeline-item.left {
-    @apply justify-end mr-[5px];
+.showcase-item {
+    display: flex;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    min-height: calc(15 * var(--vw));
+    align-items: center;
+}
+
+.showcase-item.left {
+    justify-content: flex-end;
     padding-right: 50%;
 }
 
-.timeline-item.right {
-    @apply justify-start ml-[5px];
+.showcase-item.right {
+    justify-content: flex-start;
     padding-left: 50%;
 }
 
-.timeline-card {
-    @apply bg-transparent rounded-2xl p-0 flex flex-col items-center gap-2 border-none shadow-none w-[260px] transition-transform duration-300;
-    backdrop-filter: none;
+.showcase-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: calc(22 * var(--vw));
+    transition: all 0.3s ease;
 }
 
-.timeline-card:hover {
-    @apply -translate-y-1 shadow-none;
+.showcase-item.left .showcase-card-wrapper {
+    margin-right: calc(4 * var(--vw));
 }
 
-.timeline-image {
-    @apply w-[260px] h-[180px] object-cover rounded-xl;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 5px;
-    border: 3px solid #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.showcase-item.right .showcase-card-wrapper {
+    margin-left: calc(4 * var(--vw));
 }
 
-.timeline-label {
-    @apply text-base font-semibold text-white text-center m-0 leading-snug;
+.showcase-card {
+    width: 100%;
+    background: white;
+    padding: calc(0.6 * var(--vw));
+    border-radius: calc(1.2 * var(--vw));
+    box-shadow: 0 calc(2 * var(--vw)) calc(6 * var(--vw)) rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transition: all 0.5s ease;
 }
 
-.timeline-connector-img {
-    @apply w-auto object-fill shrink-0 relative -z-[1];
-    height: 60px;
-    opacity: 0.9;
-    margin-top: -30px;
+.showcase-card:hover {
+    transform: translateY(calc(-0.6 * var(--vw)));
+    box-shadow: 0 calc(3 * var(--vw)) calc(8 * var(--vw)) rgba(0, 0, 0, 0.35);
 }
 
-.left-connector {
-    margin-right: -1px;
-    margin-left: -10px;
+.showcase-image-container {
+    width: 100%;
+    aspect-ratio: 1.5;
+    border-radius: calc(0.8 * var(--vw));
+    overflow: hidden;
 }
 
-.right-connector {
-    margin-left: -6px;
-    margin-right: -10px;
+.showcase-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.showcase-label {
+    margin-top: calc(1.5 * var(--vw));
+    font-size: calc(1.2 * var(--vw));
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
 }

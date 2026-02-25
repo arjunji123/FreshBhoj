@@ -26,9 +26,7 @@ export function Hero() {
             <div className="hero-content-wrapper">
 
                 {/* ── HEADER SECTION ── */}
-                <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-4 md:gap-8">
-                    <div className="w-full h-px bg-gray-200" />
-
+                <div className="flex justify-center w-full">
                     <h1 className="hero-title-text">
                         <span>Why</span>
                         <img
@@ -37,8 +35,6 @@ export function Hero() {
                             className="hero-logo-inline"
                         />
                     </h1>
-
-                    <div className="w-full h-px bg-gray-200" />
                 </div>
 
                 <motion.p

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/vendor.css';
+import '../styles/Vendorform.css';
 
 export const VendorForm: React.FC = () => {
     return (

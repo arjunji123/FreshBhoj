@@ -13,7 +13,7 @@ export function Home() {
             <header className="page-header">
 
                 <div className="title-row grid grid-cols-[1fr_auto_1fr] items-center w-full">
-                    <div className="w-full h-px bg-white/30" />
+                    <div className="w-full h-px bg-white/55" />
 
                     <div className="logo-wrapper flex-shrink-0">
                         <img
@@ -23,7 +23,7 @@ export function Home() {
                         />
                     </div>
 
-                    <div className="w-full h-px bg-white/30" />
+                    <div className="w-full h-px bg-white/55" />
                 </div>
 
                 <p className="home-description font-light tracking-[0.05em] text-center opacity-95 leading-relaxed">
@@ -46,12 +46,11 @@ export function Home() {
                     <img
                         src="/Image/download__17_-removebg-preview 2.png"
                         alt="Noodles"
-                        className="absolute top-1/2 left-1/2 -translate-x-[32%] -translate-y-[29%] w-full h-full z-10 object-contain transition-transform duration-700"
+                        className="absolute top-1/2 left-1/2 -translate-x-[28%] -translate-y-[28%] w-full h-full z-10 scale-[1.3] object-contain transition-transform duration-700"
                     />
                 </div>
 
                 {/* Main — center */}
-                {/* FIX: no margin class here — CSS margin was fighting justify-items-center */}
                 <div className="plate-group-main aspect-square relative">
                     <img
                         src="/Image/download-removebg-preview 6.png"
@@ -62,7 +61,7 @@ export function Home() {
                     <img
                         src="/Image/download__15_-removebg-preview 1.png"
                         alt="Thali"
-                        className="absolute top-1/2 left-1/2 -translate-x-[33%] -translate-y-[36%] w-full h-full z-10 object-contain transition-transform duration-700"
+                        className="absolute top-1/2 left-1/2 -translate-x-[30%] -translate-y-[32%] w-full h-full z-10 scale-[1.4] object-contain transition-transform duration-700"
                     />
                 </div>
 
@@ -77,7 +76,7 @@ export function Home() {
                     <img
                         src="/Image/White_sause_pasta___-removebg-preview 1.png"
                         alt="Pasta"
-                        className="absolute top-1/2 left-1/2 -translate-x-[42%] -translate-y-[27%] w-full h-full z-10 scale-115 object-contain transition-transform duration-700"
+                        className="absolute top-1/2 left-1/2 -translate-x-[44%] -translate-y-[25%] w-full h-full z-10 scale-[1.4] object-contain transition-transform duration-700"
                     />
                 </div>
 
